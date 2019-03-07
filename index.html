@@ -1,0 +1,302 @@
+<!DOCTYPE html> 
+<html> 
+
+<head>
+    <script type="text/javascript" src="./lib/jquery.js"></script>
+    <script type="text/javascript" src="./lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="./frontend_utils/register.js"></script>
+    <script type="text/javascript" src="./frontend_utils/index_init.js"></script>
+    <script type="text/javascript" src="./frontend_utils/logout_usr.js"></script>
+    <script type="text/javascript" src="./frontend_utils/test.js"></script>
+    <script type="text/javascript" src="./frontend_utils/login.js"></script>
+    <script type="text/javascript" src="./frontend_utils/post_disp.js"></script>
+    <script type="text/javascript" src="./frontend_utils/post.js"></script>
+    <script type="text/javascript" src="./frontend_utils/op_on_post.js"></script>
+    <script type="text/javascript" src="./frontend_utils/reply.js"></script>
+    <script type="text/javascript" src="./frontend_utils/ten_sorted_post.js"></script>
+    <script type="text/javascript" src="./frontend_utils/usrs_in_block.js"></script>
+    <script type="text/javascript" src="./frontend_utils/hottest_in_block.js"></script>
+    <script type="text/javascript" src="./frontend_utils/more_than_avg.js"></script>
+    <script type="text/javascript" src="./frontend_utils/usrs_more_post.js"></script>
+    <script type="text/javascript" src="./frontend_utils/delete_usr.js"></script>
+    <script type="text/javascript" src="./frontend_utils/delete_post.js"></script>
+    <script type="text/javascript" src="./frontend_utils/query_usr_info.js"></script>
+</head> 
+
+<style type="text/css">
+@import"style_forum.css";
+</style>
+
+<h1>forum</h1>
+<p id="login_status">not logged in</p>
+
+<body> 
+
+    
+    <!-- <h2 id="register">register </h2>
+
+    
+    <form id="register_form" action="" > 
+    <p>name<input type="text" id="name" value="test_user" /></p> 
+    <p>password<input type="text" id="name" value="test_password" /></p> 
+    
+    <p>
+        gender
+        <select id="gender">
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select>
+    </p>
+    
+    <p>
+    birthday
+    <input type="date"  id="birthday" value="2014-02-09" />
+    </p>
+    
+    <p id='server_response'> </p>
+    
+    
+    
+    <input id="register_submit" type="submit" value="submit" />
+    
+    </form> -->
+
+
+    <!-- register -->
+    <h2>register</h2>
+    <p>name<input type="text" id="register_name" value="test_user" /></p> 
+    <p>password<input type="text" id="register_password" value="test_password" /></p> 
+    
+    <p>
+        gender
+        <select id="register_gender">
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select>
+    </p>
+    
+    <p>
+    birthday
+    <input type="date"  id="register_birthday" value="2014-02-09" />
+    </p>
+    <input id="register_submit" type="submit" value="submit" />
+
+
+
+    <!-- login -->
+    <br/>
+    
+    <h2>login</h2>
+    
+    <p>user name <input type="txt" id="login_name" value="test_user" /></p>
+    <p>password <input type="txt" id="login_password" value="test_password" /></p>
+    <button id="login_button" type="button">login</button>
+    
+    <!-- logout -->
+    
+    <br/>
+    <br/>
+    <h2>logout</h2>
+    <button id="logout_button" type="button">logout</button>
+    
+
+    <!-- post -->
+    <br/>
+    <br/>
+
+    <h2>post</h2>
+    <p>title<input type="text" id="post_title" value="test title" /></p>
+    <p>block_id<input type="text" id="post_block_id" value='0' /></p>
+    <p><input type="text" id="post_content" value="test content" /></p>
+    <p><input type="submit" id="post_submit" value="submit" /></p>
+
+    <!-- reply -->
+    <!-- <br/>
+    <br/>
+    <h2>reply</h2> -->
+
+
+    <!-- display region -->
+    <h2>display region</h2>
+    <br/>
+    <div id="display_region_div">
+        <p>latest post</p>
+        <br/>
+        <div id="disp_div0">
+            <div id="disp_info0" class="info">
+                <p id="disp_title0"></p>
+            </div>
+            
+            <div>
+                <p>
+                    <input type="submit" id="disp_click0" value="click"  />
+                    <input type="submit" id="disp_praise0" value="praise" />
+                </p>
+                <p>
+                    reply<input class="text" type="text" id="disp_reply0" value="test reply" />
+                    <input type="submit" id="disp_reply_submit0" value="submit reply" />
+                </p>
+            </div>
+        </div>
+
+
+        <br/>
+        <div id="disp_div1">
+            <div id="disp_info1" class="info">
+                <p id="disp_title1"></p>
+            </div>
+                
+            <div>
+                <p>
+                    <input type="submit" id="disp_click1" value="click"  />
+                    <input type="submit" id="disp_praise1" value="praise" />
+                </p>
+                <p>
+                    reply<input class="text" type="text" id="disp_reply1" value="test reply" />
+                    <input type="submit" id="disp_reply_submit1" value="submit reply" />
+                </p>
+            </div>
+        </div>
+
+        <br/>
+        <div id="disp_div2">
+            <div id="disp_info2" class="info">
+                <p id="disp_title2"></p>
+            </div>
+                
+            <div>
+                <p>
+                    <input type="submit" id="disp_click2" value="click"  />
+                    <input type="submit" id="disp_praise2" value="praise" />
+                </p>
+                <p>
+                    reply<input class="text" type="text" id="disp_reply2" value="test reply" />
+                    <input type="submit" id="disp_reply_submit2" value="submit reply" />
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- ten sorted post -->
+    <br/>
+    <h2>ten sorted post</h2>
+    <div id="ten_sorted_post">
+        <p>sorted by: 
+        <select id="ten_sorted_post_method_select">
+            <option value="click_num">click_num</option>
+            <option value="reply_num">reply_num</option>
+        </select>
+        <input id="ten_sorted_post_submit" type="submit" value="submit" />
+        </p>
+
+    </div>
+
+
+    <!-- users in block -->
+    <br/>
+    <h2>usrs in block</h2>
+    <div id="usrs_in_block">
+        
+        <p>
+            block_id <input id="usrs_in_block_block_id" type="text" value=0  />
+            sorted by: 
+            <select id="usrs_in_block_rank_method">
+                <option value="post_sum">post_sum</option>
+                <option value="reply_sum">reply_sum</option>
+            </select>
+            <input id="usrs_in_block_submit" type="submit" value="submit" />
+        </p>
+
+    </div>
+
+    <!-- hotest in block -->
+    <br/>
+    <h2>hottest in block</h2>
+    <div id="div_hottest_in_block">
+        
+        <p>
+            block_id <input id="hottest_in_block_id" type="text" value=0  />
+            <input id="hottest_in_block_submit" type="submit" value="submit" />
+        </p>
+
+    </div>
+
+    <!-- more than average -->
+    <br/>
+    <h2>more than average</h2>
+    <div id="div_more_than_avg">
+        
+        <p>
+            block_id <input id="more_than_avg_block_id" type="text" value=0  />
+            <input id="more_than_avg_submit" type="submit" value="submit" />
+        </p>
+        
+
+    </div>
+
+    <!-- users of more post -->
+    <br/>
+    <h2>users of more post in block A than in block B</h2>
+    <div id="div_usrs_more_post">
+        
+        <p>
+            block_id_A<input id="usrs_more_post_block_a" type="text" value=0  />
+            block_id_B<input id="usrs_more_post_block_b" type="text" value=1  />
+            <input id="usrs_more_post_submit" type="submit" value="submit" />
+        </p>
+        
+
+    </div>
+
+
+    <!-- delete usr -->
+    <br/>
+    <h2>delete usr</h2>
+    <div id="div_delete_usr">
+        
+        <p>
+            usr_id_to_delete:<input id="delete_usr_usr_id" type="text" value=100  />
+            
+            <input id="delete_usr_submit" type="submit" value="submit" />
+        </p>
+        
+
+    </div>
+
+
+    <!-- delete post -->
+    <br/>
+    <h2>delete post</h2>
+    <div id="div_delete_post">
+        
+        <p>
+            post_no_to_delete:<input id="delete_post_post_no" type="text" value=200  />
+            
+            <input id="delete_post_submit" type="submit" value="submit" />
+        </p>
+        
+ 
+    </div>
+
+
+    <!-- query user info -->
+    <br/>
+    <h2>query_usr_info</h2>
+    <div id="div_query_usr_info">
+        
+        <p>
+            query_usr_id:<input id="query_usr_info_usr_id" type="text" value=0  />
+            
+            <input id="query_usr_info_submit" type="submit" value="submit" />
+        </p>
+        
+
+    </div>
+
+
+
+</body> 
+</html>
