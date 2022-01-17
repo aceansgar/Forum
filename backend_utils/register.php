@@ -34,9 +34,9 @@ function register_insert_db()
     WHERE usr_name='{$register_name}'
     ";
     $find_dup_ret=mysqli_query($conn,$sql_find_dup);
-    $dup_cnt=mysqli_num_rows($find_dup_ret);
-    echo "dup_cnt: ".$dup_cnt."\n";
-    if($dup_cnt!=0)
+    // $dup_cnt=mysqli_num_rows($find_dup_ret);
+    // echo "dup_cnt: ".$dup_cnt."\n";
+    if($find_dup_ret)
     {
         die("register fail: name duplication\n");
     }
