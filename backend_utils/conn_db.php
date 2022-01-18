@@ -19,7 +19,7 @@ function conn_mysql()
     } 
     else
     {
-        ;// echo("connectted to mysql\n");
+        echo("connectted to mysql\n");
     }
 
     // $sql = "CREATE DATABASE TUTORIALS";
@@ -31,6 +31,18 @@ function conn_mysql()
     // {
     //    echo "Error creating database: " . mysqli_error($conn)."<br>";
     // }
+    
+    // if(!mysqli_query($conn,"SHOW DATABASES LIKE {$work_db}"))
+    // {
+    //     echo "create database {$work_db}: \n";
+    //     mysqli_query($conn, "CREATE DATABASE {$work_db}");
+    //     mysqli_select_db($conn,$work_db);
+    // }
+    // else
+    // {
+    //     mysqli_select_db($conn,$work_db);
+    // }
+    mysqli_query($conn, "CREATE DATABASE IF NOT EXISTS {$work_db}");
     mysqli_select_db($conn,$work_db);
 
     return $conn;

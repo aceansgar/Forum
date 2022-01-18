@@ -41,3 +41,8 @@ in php.ini:
     extension=mysqli
     extension_dir = "E:/Programs/php-8.0.14-Win32-vs16-x64/ext"
 
+to begin with the forum:
+caution: change the user name and password in backend_utils/conn_db.php
+go to http://localhost/frontend_utils/create_db_table.html select "create all tables"
+then go to http://localhost/ and use it
+

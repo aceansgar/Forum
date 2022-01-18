@@ -13,7 +13,7 @@ function process_login()
     var login_name=$("#login_name").val();
     var login_password=$("#login_password").val();
     var login_para={login_name:login_name,login_password:login_password};
-    $.post("backend_utils/login.php",login_para,login_post_callback);
+    $.post("../backend_utils/login.php",login_para,login_post_callback);
 }
 
 function login_post_callback(data,status)
@@ -23,8 +23,9 @@ function login_post_callback(data,status)
     // console.log("type of data: \n"+typeof(data)+"\n");
     try 
     {
-    parser=new DOMParser();
-    xmlDoc=parser.parseFromString(data,"text/xml");
+        parser=new DOMParser();
+        // console.log(data);
+        xmlDoc=parser.parseFromString(data,"text/xml");
     }
     catch(e) {alert(e.message);}
     

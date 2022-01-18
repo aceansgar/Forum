@@ -51,7 +51,8 @@ function register_insert_db()
     if(!$usr_id_entry_ret)
     {
         //query failed
-        die("select usr_id query failed\n").mysqli_error();
+        // die("select usr_id query failed\n").mysqli_error();
+        $usr_id = 0;
     }
     else
     {

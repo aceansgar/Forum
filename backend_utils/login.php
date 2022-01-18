@@ -55,7 +55,8 @@ else
 
 }
 
-
+echo "in login.php:\n";
+echo $echo_text;
 
 $sql_usr_info="
 ";

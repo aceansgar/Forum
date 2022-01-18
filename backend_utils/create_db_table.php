@@ -23,8 +23,16 @@ function create_table_USR_INFO($conn)
     )
         ";
     $query_ret=mysqli_query($conn,$sql_create_table);
+
+    if(!$query_ret)
+    {
+        echo 'creation fails\n'.mysqli_error($conn)."\n";
+    }
+    else
+    {
+        echo "table USR_INFO creation success\n";
+    }
     return $query_ret;
-    
 }
 
 function create_table_USR_PASSWORD($conn)
@@ -38,6 +46,14 @@ function create_table_USR_PASSWORD($conn)
     )
     ";
     $query_ret=mysqli_query($conn,$sql_create_table);
+    if(!$query_ret)
+    {
+        echo 'creation fails\n'.mysqli_error($conn)."\n";
+    }
+    else
+    {
+        echo "table USR_PASSWORD creation success\n";
+    }
     return $query_ret;
 }
 
@@ -52,6 +68,14 @@ function create_table_POST_CONT($conn)
     )
     ";
     $query_ret=mysqli_query($conn,$sql_create_table);
+    if(!$query_ret)
+    {
+        echo 'creation fails\n'.mysqli_error($conn)."\n";
+    }
+    else
+    {
+        echo "table POST_CONT creation success\n";
+    }
     return $query_ret;
 }
 
@@ -70,6 +94,14 @@ function create_table_POST_INFO($conn)
     )
     ";
     $query_ret=mysqli_query($conn,$sql_create_table);
+    if(!$query_ret)
+    {
+        echo 'creation fails\n'.mysqli_error($conn)."\n";
+    }
+    else
+    {
+        echo "table POST_INFO creation success\n";
+    }
     return $query_ret;
 }
 
@@ -88,6 +120,14 @@ function create_table_REPLY($conn)
     )
     ";
     $query_ret=mysqli_query($conn,$sql_create_table);
+    if(!$query_ret)
+    {
+        echo 'creation fails\n'.mysqli_error($conn)."\n";
+    }
+    else
+    {
+        echo "table REPLY creation success\n";
+    }
     return $query_ret;
 }
 
@@ -102,6 +142,14 @@ function create_table_PRIVILEDGE($conn)
     )
     ";
     $query_ret=mysqli_query($conn,$sql_create_table);
+    if(!$query_ret)
+    {
+        echo 'creation fails\n'.mysqli_error($conn)."\n";
+    }
+    else
+    {
+        echo "table PRIVILEDGE creation success\n";
+    }
     return $query_ret;
 }
 
@@ -115,6 +163,14 @@ function create_table_UNUSUAL_USR($conn)
     )
     ";
     $query_ret=mysqli_query($conn,$sql_create_table);
+    if(!$query_ret)
+    {
+        echo 'creation fails\n'.mysqli_error($conn)."\n";
+    }
+    else
+    {
+        echo "table UNUSUAL_USR creation success\n";
+    }
     return $query_ret;
 }
 
@@ -128,6 +184,14 @@ function create_table_FORUM_ADMIN($conn)
     )
     ";
     $query_ret=mysqli_query($conn,$sql);
+    if(!$query_ret)
+    {
+        echo 'creation fails\n'.mysqli_error($conn)."\n";
+    }
+    else
+    {
+        echo "table FORUM_ADMIN creation success\n";
+    }
     return $query_ret;
 }
 
@@ -151,6 +215,14 @@ function create_trigger_UNUSUAL_TRIGGER($conn)
    end
     ";
     $query_ret=mysqli_query($conn,$sql_create_trigger);
+    if(!$query_ret)
+    {
+        echo 'creation fails\n'.mysqli_error($conn)."\n";
+    }
+    else
+    {
+        echo "table UNUSUAL_TRIGGER creation success\n";
+    }
     return $query_ret;
 
 }
@@ -215,19 +287,32 @@ elseif($table_name=="UNUSUAL_TRIGGER")
     //     die(mysqli_err($conn)."\n");
     // }
 }
+elseif($table_name=="create_all")
+{
+    create_table_USR_INFO($conn);
+    create_table_USR_PASSWORD($conn);
+    create_table_POST_CONT($conn);
+    create_table_POST_INFO($conn);
+    create_table_REPLY($conn);
+    create_table_PRIVILEDGE($conn);
+    create_table_FORUM_ADMIN($conn);
+    set_quote($conn);
+    create_table_UNUSUAL_USR($conn);
+    create_trigger_UNUSUAL_TRIGGER($conn);
+}
 else
 {
     die("table_name no match\ntable_name: ".$table_name);
 }
 
-if(!$retval)
-{
-    die('creation fails\n'.mysqli_error($conn));
-}
-else
-{
-    echo $table_name." creation success\n";
-}
+// if(!$retval)
+// {
+//     die('creation fails\n'.mysqli_error($conn));
+// }
+// else
+// {
+//     echo $table_name." creation success\n";
+// }
 
 
 

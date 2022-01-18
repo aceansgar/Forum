@@ -16,10 +16,18 @@ function onclick_set_quote_button()
     $.post("../backend_utils/create_db_table.php",post_para,create_table_post_callback);
 }
 
+function onclick_create_all_button()
+{
+    console.log("onclick_create_all_button: \n");
+    var post_para={table_name:"create_all"};
+    $.post("../backend_utils/create_db_table.php",post_para,create_table_post_callback);
+}
+
 function create_table_ready_func()
 {
     $("#create_submit").click(create_table_onclick_button);
     $("#set_quote").click(onclick_set_quote_button);
+    $("#create_all").click(onclick_create_all_button);
 }
 
 
