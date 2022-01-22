@@ -13,13 +13,14 @@ function process_login()
     var login_name=$("#login_name").val();
     var login_password=$("#login_password").val();
     var login_para={login_name:login_name,login_password:login_password};
-    $.post("../backend_utils/login.php",login_para,login_post_callback);
+    $.post("backend_utils/login.php",login_para,login_post_callback);
 }
 
 function login_post_callback(data,status)
 {
+    
     console.log("login_post_callback_begin \n");
-    // console.log("data: \n"+data+"[end]\n");
+    console.log("data: \n"+data+"[end]\n");
     // console.log("type of data: \n"+typeof(data)+"\n");
     try 
     {
@@ -29,7 +30,8 @@ function login_post_callback(data,status)
     }
     catch(e) {alert(e.message);}
     
-
+    var xmlDoc0 = parser.parseFromString("<bookstore><book>math</book></bookstore>", "text/xml");
+    console.log(xmlDoc0.getElementsByTagName("book")[0].childNodes[0].nodeValue);
     var login_response_login_status=xmlDoc.getElementsByTagName("login_status")[0].childNodes[0].nodeValue;
     login_response_login_status=Number(login_response_login_status);
     console.log("login status:"+String(login_response_login_status)+"\n");

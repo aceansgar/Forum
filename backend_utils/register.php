@@ -33,10 +33,13 @@ function register_insert_db()
     $sql_find_dup="SELECT ALL * from USR_PASSWORD
     WHERE usr_name='{$register_name}'
     ";
+    echo $sql_find_dup;
     $find_dup_ret=mysqli_query($conn,$sql_find_dup);
-    // $dup_cnt=mysqli_num_rows($find_dup_ret);
+    $dup_cnt=mysqli_num_rows($find_dup_ret);
     // echo "dup_cnt: ".$dup_cnt."\n";
-    if($find_dup_ret)
+    // echo $find_dup_ret;
+    // echo "\n";
+    if($dup_cnt)
     {
         die("register fail: name duplication\n");
     }
@@ -51,8 +54,8 @@ function register_insert_db()
     if(!$usr_id_entry_ret)
     {
         //query failed
-        // die("select usr_id query failed\n").mysqli_error();
-        $usr_id = 0;
+        die("select usr_id query failed\n").mysqli_error();
+        // $usr_id = 0;
     }
     else
     {

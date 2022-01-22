@@ -19,7 +19,7 @@ function conn_mysql()
     } 
     else
     {
-        echo("connectted to mysql\n");
+        // echo("connectted to mysql\n");
     }
 
     // $sql = "CREATE DATABASE TUTORIALS";

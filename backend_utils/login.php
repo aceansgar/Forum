@@ -1,6 +1,8 @@
 <?php
 require "conn_db.php";
 
+// echo "<others>";
+
 $name=$_POST['login_name'];
 $password=$_POST['login_password'];
 // echo "name: ".$name."\n";
@@ -13,6 +15,7 @@ $echo_text="";
 $sql="SELECT * FROM USR_PASSWORD
 WHERE usr_name='{$name}'
 ";
+// echo $sql;
 $echo_text=$echo_text."sql: \n";
 $echo_text=$echo_text.$sql."\n";
 $sql_ret=mysqli_query($conn,$sql);
@@ -55,12 +58,13 @@ else
 
 }
 
-echo "in login.php:\n";
-echo $echo_text;
+// echo "in login.php:\n";
+// echo $echo_text;
 
 $sql_usr_info="
 ";
 
+// echo "</others>";
 
 //create xml dom to echo
 $doc=new DOMDocument('1.0','utf-8');
